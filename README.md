@@ -82,12 +82,6 @@ This repository is maintained as part of my Technosignia internship to document 
 
 Each task will be organized separately to make the work easy to navigate, review, and track.
 
-## 🤝 Connect With Me
-
-* **GitHub:** [Your GitHub Profile](https://github.com/)
-* **LinkedIn:** [Your LinkedIn Profile](https://www.linkedin.com/)
-
----
 
 ⭐ Thank you for visiting my internship repository!
 
