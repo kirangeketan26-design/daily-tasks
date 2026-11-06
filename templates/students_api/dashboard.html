@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudentHub | Day 18 CRUD</title>
+  <link rel="stylesheet" href="{% static 'students_api/style.css' %}">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">S</span><span>StudentHub</span></div>
+      <div class="side-label">WORKSPACE</div>
+      <a class="nav-item active" href="/">▦ <span>Students</span></a>
+      <a class="nav-item" href="/api/students/">⌘ <span>REST API</span></a>
+      <div class="sidebar-note">
+        <span class="live-dot"></span>
+        <div><strong>Database connected</strong><small>PostgreSQL · Django ORM</small></div>
+      </div>
+      <div class="side-footer">DAY 18 PRACTICAL<br><span>Database Connectivity & CRUD</span></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><div class="eyebrow">STUDENT MANAGEMENT</div><h1>Students</h1></div>
+        <div class="top-actions"><span class="api-pill"><i></i> API ONLINE</span><a class="outline-btn" href="/api/students/" target="_blank">Open API ↗</a></div>
+      </header>
+
+      <section class="hero">
+        <div><div class="hero-kicker">DAY 18 · DJANGO REST FRAMEWORK</div><h2>Manage your student records.</h2>
+          <p>Create, view, update and delete records. Every change is saved in PostgreSQL.</p></div>
+        <div class="hero-icon">▤</div>
+      </section>
+
+      <section class="stats">
+        <article class="stat-card"><span class="stat-icon purple">♙</span><div><small>TOTAL STUDENTS</small><strong id="totalCount">—</strong></div></article>
+        <article class="stat-card"><span class="stat-icon blue">◈</span><div><small>DATABASE</small><strong class="stat-text">PostgreSQL</strong></div></article>
+        <article class="stat-card"><span class="stat-icon green">✓</span><div><small>CRUD STATUS</small><strong class="stat-text">All operations</strong></div></article>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel form-panel">
+          <div class="panel-heading"><div><div class="eyebrow">RECORD DETAILS</div><h3 id="formTitle">Add a student</h3></div><span class="plus-badge">＋</span></div>
+          <form id="studentForm">
+            {% csrf_token %}
+            <input type="hidden" id="studentId">
+            <label for="name">Full name</label><input id="name" name="name" placeholder="e.g. Ketan Kirange" maxlength="100" required>
+            <div class="two-col">
+              <div><label for="age">Age</label><input id="age" name="age" type="number" min="1" max="100" placeholder="21" required></div>
+              <div><label for="course">Course</label><input id="course" name="course" placeholder="Computer Engineering" maxlength="120" required></div>
+            </div>
+            <label for="email">Email address</label><input id="email" name="email" type="email" placeholder="student@example.com" required>
+            <div class="form-actions"><button class="primary-btn" id="submitBtn" type="submit">＋ Add student</button><button class="cancel-btn hidden" id="cancelBtn" type="button">Cancel</button></div>
+          </form>
+          <div id="message" class="message" role="status"></div>
+        </article>
+
+        <article class="panel list-panel">
+          <div class="list-heading"><div><div class="eyebrow">DATABASE RECORDS</div><h3>Student directory</h3></div><span class="record-count" id="recordCount">0 records</span></div>
+          <div class="search-row"><span>⌕</span><input id="searchInput" placeholder="Search by name, course or email..."></div>
+          <div class="table-wrap">
+            <table><thead><tr><th>STUDENT</th><th>COURSE</th><th>AGE</th><th>ACTIONS</th></tr></thead>
+              <tbody id="studentRows"><tr><td colspan="4" class="empty">Loading student records...</td></tr></tbody>
+            </table>
+          </div>
+          <div class="table-foot"><span>Showing records from PostgreSQL</span><button id="refreshBtn" class="refresh-btn" type="button">↻ Refresh</button></div>
+        </article>
+      </section>
+      <footer>Built with Django · Django REST Framework · PostgreSQL <span>DAY 18</span></footer>
+    </main>
+  </div>
+  <script src="{% static 'students_api/app.js' %}"></script>
+</body>
+</html>
