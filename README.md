@@ -1,4 +1,4 @@
-# Day 19 — PostgreSQL Database Connectivity & Student CRUD API
+# Day 20 — PostgreSQL Database Connectivity & Student CRUD API
 
 A Django REST Framework practical using **PostgreSQL (not SQLite and not Docker)**.
 
